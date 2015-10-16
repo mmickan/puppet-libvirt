@@ -25,8 +25,10 @@ class libvirt::params {
       $deb_default = {}
       # UNIX socket
       $auth_unix_ro = 'none'
-      $unix_sock_rw_perms = '0770'
       $auth_unix_rw = 'none'
+      $unix_sock_ro_perms = false
+      $unix_sock_rw_perms = '0770'
+      $unix_sock_dir = false
       case $::operatingsystem {
         'Ubuntu': {
           $libvirt_service = 'libvirt-bin'
