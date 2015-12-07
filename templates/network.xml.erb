@@ -46,4 +46,15 @@
     <%- end-%>
   <%-  end-%>
   <%-end-%>
+  <%-if @portgroup -%>
+    <%-@portgroup.each do |pg| -%>
+  <portgroup name='<%=pg['name']-%>'<%-if pg['default']-%> default='yes'<%-end-%>>
+      <%-if pg['virtualport'] -%>
+    <virtualport<%-if pg['virtualport']['type']-%> type='<%=pg['virtualport']['type']-%>'<%-end-%>>
+      <parameters<%-pg['virtualport']['parameters'].each do |name,val|-%> <%=name%>="<%=val%>"<%-end-%>/>
+    </virtualport>
+      <%-end-%>
+  </portgroup>
+    <%-end-%>
+  <%-end-%>
 </network>
