@@ -26,7 +26,7 @@
 #    bootp_file - A file to serve for servers booting from PXE
 #    bootp_server - Which server that file is served from
 #  $mac - A MAC for this network, if none is defined, libvirt will chose one for you
-#  $portgroup - array of hashes with
+#  $portgroups - array of hashes with
 #    name (string, name of portgroup)
 #    default (boolean, set to true for default portgroup)
 #    virtualport, another hash that consists of
@@ -83,7 +83,7 @@ define libvirt::network (
   $ip                 = undef,
   $ipv6               = undef,
   $mac                = undef,
-  $portgroup          = undef,
+  $portgroups         = [],
 ) {
   validate_bool ($autostart)
   validate_re ($ensure, '^(present|defined|enabled|running|undefined|absent)$',
